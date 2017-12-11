@@ -10,8 +10,9 @@ public class Team13SortCompetition extends SortCompetition
 {
 	public static void main(String[] args)
 	{
-		/*Team13SortCompetition test= new Team13SortCompetition();
-		long startTime;
+		
+		Team13SortCompetition test= new Team13SortCompetition();
+		/*long startTime;
 		long endTime;
 		long totalTime;
 		long avgTime;
@@ -30,6 +31,9 @@ public class Team13SortCompetition extends SortCompetition
 		}
 		avgTime=sumTime/10;
 		System.out.println(avgTime);*/
+		String[] strings= {"Cherry","Apple","Banana"};
+		test.challengeFive(strings, "Apple");
+		printArr(strings);
 	}
 	public int challengeOne(int[] arr)
 	{
@@ -87,7 +91,11 @@ public class Team13SortCompetition extends SortCompetition
 	}
 	public int challengeFive(Comparable[] list,Comparable obj)
 	{
-		mergeSort(list);
+		Comparable[] output=mergeSort(list);
+		for(int x=0;x<list.length;x++)
+		{
+			list[x]=output[x];
+		}
 		for(int x=0;x<list.length;x++)
 		{
 			if(list[x].compareTo(obj)==0)
@@ -275,10 +283,11 @@ public class Team13SortCompetition extends SortCompetition
 	//radix sort
 	public static void radixSort(int arr[])
     {
-        int max = findMax(arr);
-        for (int pow=1;max/pow>0;pow*=10)
+        int max=findMax(arr);
+        //this for loop iterates until the number of digits surpass the amount of digits in max
+        for(int pow=1;max/pow>0;pow*=10)
         {
-            countSortRadix(arr, max, pow);
+            countSortRadix(arr,max,pow);
         }
     }
     private static int getRandomInteger(int low, int high)
@@ -321,6 +330,14 @@ public class Team13SortCompetition extends SortCompetition
 	private static void printArr(int[] list)
 	{
 		for(int h:list)
+		{
+			System.out.print("["+h+"] ");
+		}
+		System.out.println();
+	}
+	private static void printArr(String[] list)
+	{
+		for(String h:list)
 		{
 			System.out.print("["+h+"] ");
 		}
